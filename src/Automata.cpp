@@ -16,10 +16,16 @@ void Automata::off() {
 }
 
 void Automata::coin(int value) {
-    if (state == ACCEPTING_COINS) {
+    if (state == ON) {
         cash += value;
         std::cout<<"Cash: " << cash << std::endl;
+    } else {
+        std::cout << "Invalid state" << std::endl;
     }
+}
+
+int Automata::getCash() {
+    return cash;
 }
 
 void Automata::getMenu() {
@@ -37,11 +43,11 @@ STATES Automata::getState() {
 }
 
 void Automata::choice(int drinkNumber) {
-    if (state == CHOOSING_DRINK) {
+    if (state == ON) {
         if (drinkNumber >= 1 && drinkNumber <=3) {
-            state = CHECKING_AMOUNT;
-            int price = prices[drinkNumber-1];
-            std::cout << "You have chosen " << menu[drinkNumber-1] << " for " << price << " rubles." << std::endl;
+            state = ACCEPT;
+            chosen = drinkNumber-1;
+            std::cout << "You have chosen " << menu[drinkNumber-1] << std::endl;
         } else {
             std::cout << "Invalid drink number." << std::endl;
         }
@@ -50,46 +56,38 @@ void Automata::choice(int drinkNumber) {
     }
 }
 
+int Automata::getChosenDrink() {
+    return chosen;
+}
 
-void Automata::check() {
-    if (state == CHECKING_AMOUNT) {
-        if (cash >= prices[0]) {
-            state = COOKING;
-            std::cout << "Cooking..." << std::endl;
-        } else {
-            std::cout << "Not enough money." << std::endl;
-            state = ACCEPTING_COINS;
-        }
+bool Automata::check() {
+    if (cash >= prices[chosen]) {
+        return true;
     } else {
-        std::cout << "Cannot check amount in this state." << std::endl;
+        std::cout << "Not enough money." << std::endl;
+        state = ON;
+        return false;
     }
 }
 
 void Automata::cancel() {
-    if (state == ACCEPTING_COINS || state == CHOOSING_DRINK) {
-        cash = 0;
-        state = ON;
-        std::cout << "Canceled." << std::endl;
-    } else {
-        std::cout << "Cannot cancel in this state." << std::endl;
-    }
+    cash = 0;
+    chosen = -1;
+    state = ON;
+    std::cout << "succesfull canceled" << std::endl;
 }
 
 void Automata::cook() {
-    if (state == COOKING) {
-        std::cout << "Done. Please take your drink." << std::endl;
-        cash -= prices[0];
-        state = FINISHED;
-    } else {
-        std::cout << "Cannot cook in this state." << std::endl;
-    }
+    state == COOK;
+    std::cout << "Cooking " << menu[chosen] << std::endl;
 }
 
 void Automata::finish() {
-    if (state == FINISHED) {
-        cash = 0;
+    if (state == COOK) {
+        cash -= prices[chosen];
+        chosen = -1;
         state = ON;
-        std::cout << "Thank you for using our automata!" << std::endl;
+        std::cout << "Thank you!" << std::endl;
     } else {
         std::cout << "Cannot finish in this state." << std::endl;
     }

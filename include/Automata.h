@@ -5,11 +5,12 @@
 #include <iostream>
 #include <string>
 
-enum STATES {OFF, ON, ACCEPTING_COINS, CHOOSING_DRINK, CHECKING_AMOUNT, COOKING, FINISHED};
+enum STATES {OFF, ON, ACCEPT, CHECK, COOK};
 
 class Automata {
 private:
     int cash;
+    int chosen;
     std::string menu[3] = {"Cappuccino", "Lungo", "Risutto"};
     int prices[3] = {50, 30, 40};
     STATES state;
@@ -19,10 +20,13 @@ public:
     void on();
     void off();
     void coin(int value);
+    int getCash();
     void getMenu();
     STATES getState();
     void choice(int drinkNumber);
-    void check();
+    int getChosenDrink();
+
+    bool check();
     void cancel();
     void cook();
     void finish();
