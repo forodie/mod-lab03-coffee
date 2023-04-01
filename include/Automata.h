@@ -4,10 +4,9 @@
 #include <iostream>
 #include <string>
 
-enum STATES {OFF, ON, ACCEPT, CHECK, COOK};
-
 class Automata {
  private:
+    enum STATES {OFF, ON, ACCEPT, CHECK, COOK};
     int cash;
     int chosen;
     std::string menu[3] = {"Cappuccino", "Lungo", "Risutto"};
