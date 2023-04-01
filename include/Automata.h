@@ -7,14 +7,14 @@
 enum STATES {OFF, ON, ACCEPT, CHECK, COOK};
 
 class Automata {
-private:
+ private:
     int cash;
     int chosen;
     std::string menu[3] = {"Cappuccino", "Lungo", "Risutto"};
     int prices[3] = {50, 30, 40};
     STATES state;
 
-public:
+ public:
     Automata();
     void on();
     void off();

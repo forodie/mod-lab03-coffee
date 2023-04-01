@@ -1,3 +1,4 @@
+// Copyright 2022 UNN-IASR
 #include "Automata.h"
 
 int main() {
@@ -9,6 +10,5 @@ int main() {
     a.check();
     a.cook();
     a.finish();
-    
     return 0;
 }

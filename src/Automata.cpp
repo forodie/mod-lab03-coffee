@@ -1,3 +1,4 @@
+// Copyright 2022 UNN-IASR
 #include "Automata.h"
 
 Automata::Automata() {
@@ -12,13 +13,13 @@ void Automata::on() {
 
 void Automata::off() {
     state = OFF;
-    std::cout<<"Automata is turned off." << std::endl;
+    std::cout << "Automata is turned off." << std::endl;
 }
 
 void Automata::coin(int value) {
     if (state == ON) {
         cash += value;
-        std::cout<<"Cash: " << cash << std::endl;
+        std::cout << "Cash: " << cash << std::endl;
     } else {
         std::cout << "Invalid state" << std::endl;
     }
@@ -31,7 +32,7 @@ int Automata::getCash() {
 void Automata::getMenu() {
     if (state == ON) {
         for (int i = 0; i < 3; i++) {
-            std::cout << i+1 << "." << menu[i] << '-' << prices[i] << " rubles" << std::endl;
+            std::cout << menu[i] << '-' << prices[i] << " rub" << std::endl;
         }
     } else {
         std::cout << "Cannot get menu in this state." << std::endl;
@@ -52,7 +53,7 @@ void Automata::choice(int drinkNumber) {
             std::cout << "Invalid drink number." << std::endl;
         }
     } else {
-        std::cout << "Cannot choose drink in this state." << std::endl; 
+        std::cout << "Cannot choose drink in this state." << std::endl;
     }
 }
 
