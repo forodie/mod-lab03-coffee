@@ -39,10 +39,6 @@ void Automata::getMenu() {
     }
 }
 
-STATES Automata::getState() {
-    return state;
-}
-
 void Automata::choice(int drinkNumber) {
     if (state == ON) {
         if (drinkNumber >= 1 && drinkNumber <=3) {

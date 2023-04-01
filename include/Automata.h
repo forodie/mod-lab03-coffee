@@ -13,20 +13,19 @@ class Automata {
     void coin(int value);
     int getCash();
     void getMenu();
-    STATES getState();
+    STATES getState() { return state; }
     void choice(int drinkNumber);
     int getChosenDrink();
     bool check();
     void cancel();
     void cook();
     void finish();
-    
  private:
     int cash;
     int chosen;
     std::string menu[3] = {"Cappuccino", "Lungo", "Risutto"};
     int prices[3] = {50, 30, 40};
-    STATES state;
+    STATES state = OFF;
 };
 
 #endif  // INCLUDE_AUTOMATA_H_
