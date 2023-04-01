@@ -75,7 +75,7 @@ void Automata::cancel() {
 }
 
 void Automata::cook() {
-    state == COOK;
+    state = COOK;
     std::cout << "Cooking " << menu[chosen] << std::endl;
 }
 

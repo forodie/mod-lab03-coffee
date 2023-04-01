@@ -32,7 +32,7 @@ TEST(AutomataTest, Coin) {
 TEST(AutomataTest, Cancel) {
   Automata a;
   a.on();
-  a.coin(10);
+  a.coin(50);
   a.choice(1);
   a.check();
   testing::internal::CaptureStdout();
