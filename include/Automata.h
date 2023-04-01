@@ -1,7 +1,6 @@
 // Copyright 2022 UNN-IASR
 #ifndef INCLUDE_AUTOMATA_H_
 #define INCLUDE_AUTOMATA_H_
-
 #include <iostream>
 #include <string>
 
@@ -25,7 +24,6 @@ public:
     STATES getState();
     void choice(int drinkNumber);
     int getChosenDrink();
-
     bool check();
     void cancel();
     void cook();

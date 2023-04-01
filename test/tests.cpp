@@ -1,23 +1,23 @@
 // Copyright 2022 GHA Test Team
-#include <gtest/gtest.h>
 #include "Automata.h"
+#include <gtest/gtest.h>
 
 TEST(AutomataTest, InitialState) {
   Automata a;
-  EXPECT_EQ(a.getState(), "OFF");
+  EXPECT_EQ(a.getState(), Automata::"OFF");
 }
 
 TEST(AutomataTest, TurnOn) {
   Automata a;
   a.on();
-  EXPECT_EQ(a.getState(), "ON");
+  EXPECT_EQ(a.getState(), Automata::"ON");
 }
 
 TEST(AutomataTest, TurnOff) {
   Automata a;
   a.on();
   a.off();
-  EXPECT_EQ(a.getState(), "OFF");
+  EXPECT_EQ(a.getState(), Automata::"OFF");
 }
 
 TEST(AutomataTest, Coin) {
@@ -26,15 +26,22 @@ TEST(AutomataTest, Coin) {
   a.coin(10);
   EXPECT_EQ(a.getCash(), 10);
   a.coin(20);
-  EXPECT_EQ(a.getCash(),30);
+  EXPECT_EQ(a.getCash(), 30);
 }
 
 TEST(AutomataTest, Cancel) {
   Automata a;
   a.on();
   a.coin(10);
+  a.choice(1);
+  a.check();
+  testing::internal::captureStdout();
   a.cancel();
-  EXPECT_EQ(a.getState(), "ON");
+  std::string output = testing::internal::GetCapturedStdout();
+  std::string expected = "succesfull canceled";
+  EXPECT_EQ(output, expected);
+  EXPECT_EQ(a.getState(), Automata::"ON");
+  EXPECT_EQ(a.getCash(), 0);
 }
 
 TEST(AutomataTest, CheckSuccess) {
