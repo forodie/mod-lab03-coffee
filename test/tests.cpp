@@ -50,7 +50,7 @@ TEST(AutomataTest, CheckSuccess) {
     a.coin(50);
     a.choice(1);
     EXPECT_TRUE(a.check());
-    EXPECT_EQ(a.getState(), Automata::ACCEPT);
+    EXPECT_EQ(a.getState(), Automata::"ACCEPT");
 }
 
 TEST(AutomataTest, Cook) {
@@ -60,5 +60,5 @@ TEST(AutomataTest, Cook) {
     a.choice(2);
     a.check();
     a.cook();
-    EXPECT_EQ(a.getState(), Automata::COOK);
+    EXPECT_EQ(a.getState(), Automata::"COOK");
 }
