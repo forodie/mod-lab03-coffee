@@ -38,7 +38,7 @@ TEST(AutomataTest, Cancel) {
   testing::internal::CaptureStdout();
   a.cancel();
   std::string output = testing::internal::GetCapturedStdout();
-  std::string expected = "succesfull canceled";
+  std::string expected = "succesfull canceled\n";
   EXPECT_EQ(output, expected);
   EXPECT_EQ(a.getState(), Automata::ON);
   EXPECT_EQ(a.getCash(), 0);
