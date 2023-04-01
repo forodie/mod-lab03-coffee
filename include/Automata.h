@@ -10,10 +10,10 @@ enum STATES {OFF, ON, ACCEPTING_COINS, CHOOSING_DRINK, CHECKING_AMOUNT, COOKING,
 class Automata {
 private:
     int cash;
-    std::string menu[3] = {"Coffee", "Tea", "Cocoa"};
+    std::string menu[3] = {"Cappuccino", "Lungo", "Risutto"};
     int prices[3] = {50, 30, 40};
     STATES state;
-    
+
 public:
     Automata();
     void on();
